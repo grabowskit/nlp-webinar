@@ -859,3 +859,15 @@ GET blogs-with-embeddings/_knn_search
   },
   "_source": ["body_content_window", "url"]
 }
+
+#question/answering example
+POST _ml/trained_models/deepset__tinyroberta-squad2/_infer
+{
+  "docs":[{"text_field": "TEXT"}],
+  "inference_config": {
+    "question_answering": {
+        "question": "what type of anomaly detection job?",
+        "max_answer_length": 30
+     }
+  }
+}
